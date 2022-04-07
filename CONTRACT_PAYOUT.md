@@ -71,7 +71,7 @@ AAAAAAAAAAU=
 AAAAAAAAAAc=
 ```
 15. Now we're ready to try and solve the puzzle. Notice that we specify the prize amount (10 million Algos) along with the encoded arguments.
-We specify the contrat account's program rather than its address (that would be cheating!!!!):
+We specify the contract account's program rather than its address (that would be cheating!!!!):
 ```sh
 # goal clerk send -a 10000000 -t $WINNER --from-program build/factorizer_game_1_5_7.teal --argb64 "AAAAAAAAAAU=" --argb64 "AAAAAAAAAAc="
 Sent 10000000 MicroAlgos from account PZBHMI3WNNU65SIFFAYT53UZKRQR4JGE3W7PCPYE3FQMENJTE6GU7YCMBE to address WUCXRKKNIGQQY5BBYKMORALV5EHXTS5BGAI664VEFUTADP5YJ3OP7KUKFM, transaction ID: WWX3WAGXNOXT3TLQGVUVUHLR6SRB352UI2FXL44SKA4RAXFK3ICA. Fee set to 1000
