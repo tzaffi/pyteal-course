@@ -62,7 +62,9 @@ class CompiledSignature:
 
 
 def signature(algod_client: AlgodClient, pyteal: Expr) -> CompiledSignature:
-    teal = compileTeal(pyteal, mode=Mode.Signature, version=MAX_TEAL_VERSION)
+    teal = compileTeal(
+        pyteal, mode=Mode.Signature, version=MAX_TEAL_VERSION, assembleConstants=True
+    )
     compilation_result = algod_client.compile(teal)
     return CompiledSignature(
         address=compilation_result["hash"],

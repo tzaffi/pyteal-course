@@ -3,8 +3,28 @@ CONTRACT = contracts.counter.step_01
 compile:
 	./build.sh $(CONTRACT)
 
-# BRIDGE INTO algod:
+LSIG_BASE = factorizer_game
+LOGICSIG = "contracts.fuzz.$(LSIG_BASE)"
+A = 1
+P = 5
+Q = 7
+zompile:
+	./zuild.sh $(LOGICSIG) $(A) $(P) $(Q)
+
+
+INT=123
+int-b64:
+	echo $(INT) | python3 -c "import sys;import base64;print(base64.b64encode(int(sys.stdin.read()).to_bytes(8,'big')).decode('ascii'))"
+
+# BRIDGE INTO algod / Sandbox:
 SANDBOX = ../pyteal-course-sandbox/sandbox
+
+# default ENV is: release
+# others available are: beta, betanet, devnet, mainnet, nightly, testnet
+SANDBOXENV = dev 
+sandbox-up:
+	$(SANDBOX) up $(SANDBOXENV)
+
 enter-algod:
 	$(SANDBOX) enter algod
 
@@ -19,15 +39,45 @@ enter-algod:
 accounts:
 	goal account list
 
-
 # the next one only works if you use
 # the following eval "trick"
 #> eval "$(make one)"
 # regardless, you'll need to pick another
 # value of $ONE
-ONE = JVWQW4FEHCKMCCLXL4SDSOJ4YLNJZJJTUGSLXPRW4IWMLCJ7VQ4M5ADTJ4
+ONE = V56ACOZTFTGL5DUR7UNS5UBMYIEGKJ4Q7ZX2BT4DLOU4ODOSGVD2VJ2S6Q
 one:
 	ONE=$(ONE)
+TWO = KXMEH6DVK7HMTSWV27IDFCDVHIPUWJH5VZSLRJRJRCWAF5CDYZTNSUT3OE
+two:
+	TWO=$(TWO)
+
+AMT = 1000000
+send:
+	goal clerk send -a $(AMT) -f $(ONE) -t $(TWO)
+
+ADDR = $(ONE)
+balance:
+	goal account balance -a $(ADDR)
+
+acct-info:
+	goal account info -a $(ADDR)
+
+#### logic sigs - my own ####
+LSIG_TEAL = "build/$(LSIG_BASE)_$(A)_$(P)_$(Q).teal"
+_zaddress:
+	goal clerk compile $(LSIG_TEAL)
+
+zaddress:
+	goal clerk compile $(LSIG_TEAL) | awk '{print $$2}' > lsig.addr
+
+
+# LSIG_ADDR=`cat lsig.addr`
+ARGS=--argb64 "AAAAAAAAAAU=" --argb64 "AAAAAAAAAAc="
+PRIZE=10000000
+run-lsig-contract:
+	goal clerk send -a $(PRIZE) -t $(ONE) --from-program $(LSIG_TEAL) $(ARGS)
+
+#### apps following Jacob ####
 
 # this one depends on what you ran `make compile CONTRACT = ???` with 
 create-1-1-0-0:
@@ -37,7 +87,7 @@ create-0-0-3-1:
 	goal app create --creator $(ONE) --approval-prog build/approval.teal --clear-prog build/clear.teal --global-byteslices 0 --global-ints 0 --local-byteslices 3 --local-ints 1
 
 APPID = -1
-info:
+app-info:
 	goal app info --app-id $(APPID)
 
 # counter:
