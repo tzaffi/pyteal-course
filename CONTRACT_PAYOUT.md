@@ -3,7 +3,8 @@
 This demo shows how you can use a Logic Signatures to payout "bounties" as rewards for
 solving a problem. The problem isn't realistically very difficult, but
 one can imagine a teacher modifying this game to give out ASA's / NFT's as student
-rewards, or a crypto foundation paying out real rewards for finding very large primes.
+rewards, or a crypto foundation paying out real rewards for finding very large primes (ok, that last one is a bit of a stretch, as the logic sig would
+probably run out of budget trying to verify it...).
 
 ## Steps for reproducing
 Assumes you've got the same setup as described in [The PyTeal Course](https://github.com/algorand-devrel/pyteal-course)
