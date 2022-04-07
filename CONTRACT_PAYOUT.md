@@ -26,7 +26,7 @@ Assumes you've got the same setup as described in [The PyTeal Course](https://gi
 ```
 6. Create a build directory with `mkdir build`
 7. Now let's compile a Logic-Sig that pays out 10 Algo's whenever a caller solves an algebraic puzzle. The program is defined in [factorizer_game.py](./contracts/lsigs/factorizer_game.py) which is compiled using the python script [create_signature.py](./create_signature.py). (If you're curious, a unique contract-account is created for each parameter triple `a`, `p`, `q`, which determine the quadratic polynomial that needs to be factored for payout. In fact, `p` and `q` are the factor solutions).
-Let's create this contract for parameters 1, 5, 7. Note that the output actually gives the contract-account's address. This is the address that should be funded so payouts can occur..
+Let's create this contract for parameters 1, 5, 7. Note that the output actually gives the contract-account's address. This is the address that should be funded so payouts can occur.
 ```sh
 ❯ python ./create_signature.py ./build contracts.lsigs.factorizer_game 1 5 7
 contract: contracts.lsigs.factorizer_game
