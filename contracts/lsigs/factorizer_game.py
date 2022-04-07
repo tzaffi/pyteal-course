@@ -28,7 +28,7 @@ def logicsig(a: int, p: int, q: int) -> Expr:
     Choices
     * (a, p, q) = (1, 5, 7)
     * compiling on TEAL version 5 and 
-    * with assempleConstants = True
+    * with assembleConstants = True
     results in Logic-Sig Contract Account Address: 
     PZBHMI3WNNU65SIFFAYT53UZKRQR4JGE3W7PCPYE3FQMENJTE6GU7YCMBE
     """
