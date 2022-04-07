@@ -1,20 +1,15 @@
 # PURE PYTHON:
-venv-reqs:
-	python -m venv venv
-	source ./venv/bin/activate
-	pip3 install -r requirements.txt
-
 CONTRACT = contracts.counter.step_01
 compile:
 	./build.sh $(CONTRACT)
 
 LSIG_BASE = factorizer_game
-LOGICSIG = "contracts.fuzz.$(LSIG_BASE)"
+LOGICSIG = "contracts.lsigs.$(LSIG_BASE)"
 A = 1
 P = 5
 Q = 7
 zompile:
-	./zuild.sh $(LOGICSIG) $(A) $(P) $(Q)
+	./build_sig_contract.sh $(LOGICSIG) $(A) $(P) $(Q)
 
 
 INT=123
