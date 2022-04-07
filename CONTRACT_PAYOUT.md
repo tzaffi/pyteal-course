@@ -1,6 +1,6 @@
 # Logic-Sig Contract Account: A Factoring Game
 
-This demo shows how you can use a Logic Signatures to payout "bounties" as rewards for
+This demo shows how you can use Logic Signatures to payout "bounties" as rewards for
 solving a problem. The problem isn't realistically very difficult, but
 one can imagine a teacher modifying this game to give out ASA's / NFT's as student
 rewards, or a crypto foundation paying out real rewards for finding very large primes (ok, that last one is a bit of a stretch, as the logic sig would
