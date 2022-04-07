@@ -25,8 +25,12 @@ def calculate_prize(closeness):
 
 def logicsig(a: int, p: int, q: int) -> Expr:
     """
-    for (a, p, q) = (1, 5, 7) we have:
-    Logic Signature Address: SJFKGZ34NYN3LNIQMWL37VC4PPL6YIM6DRJZLLVVWBFE5BAQLHRZKUBSHM
+    Choices
+    * (a, p, q) = (1, 5, 7)
+    * compiling on TEAL version 5 and 
+    * with assempleConstants = True
+    results in Logic-Sig Contract Account Address: 
+    PZBHMI3WNNU65SIFFAYT53UZKRQR4JGE3W7PCPYE3FQMENJTE6GU7YCMBE
     """
     assert all(
         isinstance(x, int) and p != q and a > 0 and x >= 0 for x in (a, p, q)
