@@ -52,7 +52,7 @@ root@6bafe6878810:~/testnetwork/Node#
 # FUNDER=KXMEH6DVK7HMTSWV27IDFCDVHIPUWJH5VZSLRJRJRCWAF5CDYZTNSUT3OE
 # WINNER=WUCXRKKNIGQQY5BBYKMORALV5EHXTS5BGAI664VEFUTADP5YJ3OP7KUKFM
 ```
-More succinctly::
+More succinctly:
 ```sh
 FUNDER=`goal account list | head -n 1 | awk '{print $2}'`
 WINNER=`goal account list | tail -n 1 | awk '{print $2}'`
