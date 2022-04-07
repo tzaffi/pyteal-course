@@ -78,7 +78,7 @@ Sent 10000000 MicroAlgos from account PZBHMI3WNNU65SIFFAYT53UZKRQR4JGE3W7PCPYE3F
 Transaction WWX3WAGXNOXT3TLQGVUVUHLR6SRB352UI2FXL44SKA4RAXFK3ICA committed in round 3
 ```
 16. Verify the new balance of the winner with `goal account balance -a $WINNER`
-17. Also verify that 10 million Algos plus the fee have been deducted from the contract address with `goal account balance -a $PUZZLE`
+17. Also verify that 10 million Algos plus the fee have been deducted from the contract account with `goal account balance -a $PUZZLE`
 18. **Exercise for the reader**: What happens if we provide the wrong solution 0 (i.e. `AAAAAAAAAAA=`) and 1 (i.e. `AAAAAAAAAAE`)? Or what if we specify the wrong prize money
 10000001?
 
