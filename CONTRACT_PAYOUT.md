@@ -59,7 +59,7 @@ WINNER=`goal account list | tail -n 1 | awk '{print $2}'`
 ```
 Verify that this worked with `echo "$FUNDER and $WINNER"`
 
-11. Let's also set up the lsig contract account address (recall we got this from step 7 above)x. EG with `PUZZLE=PZBHMI3WNNU65SIFFAYT53UZKRQR4JGE3W7PCPYE3FQMENJTE6GU7YCMBE` and make sure this worked with `echo $PUZZLE`
+11. Let's also set up the lsig contract account address (recall we got this from step 7 above). EG: `PUZZLE=PZBHMI3WNNU65SIFFAYT53UZKRQR4JGE3W7PCPYE3FQMENJTE6GU7YCMBE` and make sure this worked with `echo $PUZZLE`
 12. Let's have the funder send 100 Algo's over to our contract account: `goal clerk send -a 100000000 -f $FUNDER -t $PUZZLE`. Verify this worked with `goal account balance -a $PUZZLE`
 13. Now let's try and solve the puzzle sending the prize money over to our winner. Before we proceed, make note of the winner's pre-puzzle balance:
 `goal account balance -a $WINNER`
