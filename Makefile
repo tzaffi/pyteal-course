@@ -1,4 +1,9 @@
 # PURE PYTHON:
+venv-reqs:
+	python -m venv venv
+	source ./venv/bin/activate
+	pip3 install -r requirements.txt
+
 CONTRACT = contracts.counter.step_01
 compile:
 	./build.sh $(CONTRACT)
