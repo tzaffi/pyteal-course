@@ -1,5 +1,5 @@
 #pragma version 5
-intcblock 1 12 35 10
+intcblock 1 12 35
 pushbytes 0x43616e20796f7520666163746f722031202a20785e32202d203132202a2078202b203335203f // "Can you factor 1 * x^2 - 12 * x + 35 ?"
 pop
 intc_0 // 1
@@ -19,8 +19,6 @@ store 1
 load 0
 load 1
 +
-pushint 2 // 2
-/
 store 2
 load 2
 callsub sub1
@@ -79,15 +77,21 @@ retsub
 sub1: // calculate_prize
 store 10
 load 10
-intc_3 // 10
+intc_0 // 1
++
+pushint 20 // 20
 <
 bnz sub1_l2
 pushint 0 // 0
 b sub1_l3
 sub1_l2:
 pushint 1000000 // 1000000
-intc_3 // 10
+pushint 10 // 10
 load 10
+intc_0 // 1
++
+pushint 2 // 2
+/
 -
 *
 sub1_l3:
