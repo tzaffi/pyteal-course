@@ -32,7 +32,7 @@ Let's create this contract for parameters 1, 5, 7. Note that the output actually
 contract: contracts.lsigs.factorizer_game
 contract_args: ['1', '5', '7']
 file name: factorizer_game_1_5_7
-Logic Signature Address: PZBHMI3WNNU65SIFFAYT53UZKRQR4JGE3W7PCPYE3FQMENJTE6GU7YCMBE
+Logic Signature Address: WO3TQD3WBSDKB6WEHUMSEBFH53GZVVXYGPWYDWKUZCKEXTVCDNDHJGG6II
 ```
 
 
@@ -59,7 +59,7 @@ WINNER=`goal account list | tail -n 1 | awk '{print $2}'`
 ```
 Verify that this worked with `echo "$FUNDER and $WINNER"`
 
-11. Let's also set up the lsig contract account address (recall we got this from step 7 above). EG: `PUZZLE=PZBHMI3WNNU65SIFFAYT53UZKRQR4JGE3W7PCPYE3FQMENJTE6GU7YCMBE` and make sure this worked with `echo $PUZZLE`
+11. Let's also set up the lsig contract account address (recall we got this from step 7 above). EG: `PUZZLE=WO3TQD3WBSDKB6WEHUMSEBFH53GZVVXYGPWYDWKUZCKEXTVCDNDHJGG6II` and make sure this worked with `echo $PUZZLE`
 12. Let's have the funder send 100 Algo's over to our contract account: `goal clerk send -a 100000000 -f $FUNDER -t $PUZZLE`. Verify this worked with `goal account balance -a $PUZZLE`
 13. Now let's try and solve the puzzle sending the prize money over to our winner. Before we proceed, make note of the winner's pre-puzzle balance:
 `goal account balance -a $WINNER`
@@ -74,7 +74,7 @@ AAAAAAAAAAc=
 We specify the contract account's program rather than its address (that would be cheating!!!!):
 ```sh
 # goal clerk send -a 10000000 -t $WINNER --from-program build/factorizer_game_1_5_7.teal --argb64 "AAAAAAAAAAU=" --argb64 "AAAAAAAAAAc="
-Sent 10000000 MicroAlgos from account PZBHMI3WNNU65SIFFAYT53UZKRQR4JGE3W7PCPYE3FQMENJTE6GU7YCMBE to address WUCXRKKNIGQQY5BBYKMORALV5EHXTS5BGAI664VEFUTADP5YJ3OP7KUKFM, transaction ID: WWX3WAGXNOXT3TLQGVUVUHLR6SRB352UI2FXL44SKA4RAXFK3ICA. Fee set to 1000
+Sent 10000000 MicroAlgos from account WO3TQD3WBSDKB6WEHUMSEBFH53GZVVXYGPWYDWKUZCKEXTVCDNDHJGG6II to address WUCXRKKNIGQQY5BBYKMORALV5EHXTS5BGAI664VEFUTADP5YJ3OP7KUKFM, transaction ID: WWX3WAGXNOXT3TLQGVUVUHLR6SRB352UI2FXL44SKA4RAXFK3ICA. Fee set to 1000
 Transaction WWX3WAGXNOXT3TLQGVUVUHLR6SRB352UI2FXL44SKA4RAXFK3ICA committed in round 3
 ```
 16. Verify the new balance of the winner with `goal account balance -a $WINNER`

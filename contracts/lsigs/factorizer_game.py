@@ -20,17 +20,21 @@ def root_closeness(A, B, C, X):
 
 @Subroutine(TealType.uint64)
 def calculate_prize(closeness):
-    return If(closeness < Int(10)).Then(ONE_ALGO * (Int(10) - closeness)).Else(Int(0))
+    return (
+        If(closeness + Int(1) < Int(20))
+        .Then(ONE_ALGO * (Int(10) - (closeness + Int(1)) / Int(2)))
+        .Else(Int(0))
+    )
 
 
 def logicsig(a: int, p: int, q: int) -> Expr:
     """
     Choices
     * (a, p, q) = (1, 5, 7)
-    * compiling on TEAL version 5 and 
+    * compiling on TEAL version 5 and
     * with assempleConstants = True
-    results in Logic-Sig Contract Account Address: 
-    PZBHMI3WNNU65SIFFAYT53UZKRQR4JGE3W7PCPYE3FQMENJTE6GU7YCMBE
+    results in Logic-Sig Contract Account Address:
+    WO3TQD3WBSDKB6WEHUMSEBFH53GZVVXYGPWYDWKUZCKEXTVCDNDHJGG6II
     """
     assert all(
         isinstance(x, int) and p != q and a > 0 and x >= 0 for x in (a, p, q)
@@ -44,14 +48,14 @@ def logicsig(a: int, p: int, q: int) -> Expr:
     X2 = Btoi(Arg(1))
     C1 = ScratchVar(TealType.uint64)
     C2 = ScratchVar(TealType.uint64)
-    AVG = ScratchVar(TealType.uint64)
+    SUM = ScratchVar(TealType.uint64)
     PRIZE = ScratchVar(TealType.uint64)
     return Seq(
         Pop(msg),
         C1.store(root_closeness(A, B, C, X1)),
         C2.store(root_closeness(A, B, C, X2)),
-        AVG.store((C1.load() + C2.load()) / Int(2)),
-        PRIZE.store(calculate_prize(AVG.load())),
+        SUM.store(C1.load() + C2.load()),
+        PRIZE.store(calculate_prize(SUM.load())),
         And(
             Txn.type_enum() == TxnType.Payment,
             Txn.close_remainder_to() == Global.zero_address(),
