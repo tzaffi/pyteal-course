@@ -70,7 +70,7 @@ AAAAAAAAAAU=
 # echo 7 | python3 -c "import sys;import base64;print(base64.b64encode(int(sys.stdin.read()).to_bytes(8,'big')).decode('ascii'))"
 AAAAAAAAAAc=
 ```
-15. Now we're ready to try and solve the puzzle. Notice that we specify the prize amount (10 million Algos) along with the encoded arguments.
+15. Now we're ready to try and solve the puzzle. Notice that we specify the prize amount (10 million µAlgos i.e. 10 Algos) along with the encoded arguments.
 We specify the contract account's program rather than its address (that would be cheating!!!!):
 ```sh
 # goal clerk send -a 10000000 -t $WINNER --from-program build/factorizer_game_1_5_7.teal --argb64 "AAAAAAAAAAU=" --argb64 "AAAAAAAAAAc="
@@ -78,7 +78,7 @@ Sent 10000000 MicroAlgos from account WO3TQD3WBSDKB6WEHUMSEBFH53GZVVXYGPWYDWKUZC
 Transaction WWX3WAGXNOXT3TLQGVUVUHLR6SRB352UI2FXL44SKA4RAXFK3ICA committed in round 3
 ```
 16. Verify the new balance of the winner with `goal account balance -a $WINNER`
-17. Also verify that 10 million Algos plus the fee have been deducted from the contract account with `goal account balance -a $PUZZLE`
+17. Also verify that 10 Algos plus the fee have been deducted from the contract account with `goal account balance -a $PUZZLE`
 18. **Exercise for the reader**: What happens if we provide the wrong solution 0 (i.e. `AAAAAAAAAAA=`) and 1 (i.e. `AAAAAAAAAAE`)? Or what if we specify the wrong prize money
 10000001?
 
